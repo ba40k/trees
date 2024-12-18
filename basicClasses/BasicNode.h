@@ -8,28 +8,28 @@
 #include <bits/ios_base.h>
 
 template <typename userType>
-class Node<userType> {
+class BasicNode<userType> {
 private:
-    Node* parent;
-    Node* leftChild;
-    Node* rightChild;
+    BasicNode* parent;
+    BasicNode* leftChild;
+    BasicNode* rightChild;
     userType data;
     bool empty;
 public:
-    Node();
-    Node<userType>* getParent() const noexcept;
-    Node<userType>* getLeftChild() const noexcept;
-    Node<userType>* getRightChild() const;
+    BasicNode();
+    BasicNode<userType>* getParent() const noexcept;
+    BasicNode<userType>* getLeftChild() const noexcept;
+    BasicNode<userType>* getRightChild() const;
     userType getData() const;
     bool isEmpty() const;
-    void setParent(Node* parent);
-    void setLeftChild(Node* left);
-    void setRightChild(Node* right);
+    void setParent(BasicNode* parent);
+    void setLeftChild(BasicNode* left);
+    void setRightChild(BasicNode* right);
     void setData(userType data);
     void setEmpty(bool empty);
 };
 template <typename userType>
-Node<userType>::Node() {
+BasicNode<userType>::BasicNode() {
     parent = nullptr;
     leftChild = nullptr;
     rightChild = nullptr;
@@ -38,12 +38,12 @@ Node<userType>::Node() {
 }
 
 template<typename userType>
-Node<userType>* Node<userType>::getParent() const noexcept {
+BasicNode<userType>* BasicNode<userType>::getParent() const noexcept {
     return parent;
 }
 
 template<typename userType>
-Node<userType>* Node<userType>::getLeftChild() const noexcept{
+BasicNode<userType>* BasicNode<userType>::getLeftChild() const noexcept{
     return leftChild;
 }
 

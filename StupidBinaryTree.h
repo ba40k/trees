@@ -4,7 +4,7 @@
 
 #ifndef STUPIDBINARYTREE_H
 #define STUPIDBINARYTREE_H
-#include "basicTree.h"
+#include "../trees/basicClasses/BasicTree.h"
 template<typename T>
 class BinaryTree : public basicTree<T> {
 private:
