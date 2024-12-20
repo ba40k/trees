@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.29)
 project(trees)
-
+include_directories(spdlog/include)
+include_directories(Google_Tests/googletest/include)
 set(CMAKE_CXX_STANDARD 20)
 add_executable(trees main.cpp)
