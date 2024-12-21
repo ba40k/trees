@@ -12,14 +12,11 @@ private:
     userType data;
     bool empty = true;
 public:
-    virtual BasicNode* getParent() const noexcept = 0;
-    virtual BasicNode<userType>* getLeftChild() const noexcept = 0;
-    virtual BasicNode<userType>* getRightChild() const = 0;
+    virtual BasicNode* getAncestor() const noexcept = 0;
     virtual userType getData() const = 0;
     [[nodiscard]] virtual bool isEmpty() const = 0;
-    virtual void setParent(BasicNode* parent) = 0;
-    virtual void setLeftChild(BasicNode* left) = 0;
-    virtual void setRightChild(BasicNode* right) = 0;
+    virtual void setAncestor(BasicNode* ancector_) = 0;
+    // todo: Добавление i-й вершины и ее получение
     virtual void setData(userType data) = 0;
     virtual void setEmpty(bool empty) = 0;
     virtual ~BasicNode() = 0;

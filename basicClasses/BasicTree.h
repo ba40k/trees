@@ -11,12 +11,11 @@ class BasicTree {
 private:
   BasicNode<userType>* root=nullptr;
 public:
-  template<typename elementType>
   class BasicIterator {
   public:
-    elementType* element = nullptr;
+    userType* element = nullptr;
     public:
-    virtual elementType& operator*() const = 0;
+    virtual userType& operator*() const = 0;
     virtual void operator++() const = 0;
     virtual bool operator==(const BasicIterator& other) const = 0;
     virtual bool operator!=(const BasicIterator& other) const = 0;
@@ -31,6 +30,11 @@ public:
     virtual bool operator<(const BasicIterator& other) const = 0;
     virtual bool operator<=(const BasicIterator& other) const = 0;
     virtual ~BasicIterator() = default;
+  };
+  class BasicConstIterator : public BasicIterator {
+  public:
+    const userType& operator*() const override = 0;
+    ~BasicConstIterator() override = default;
   };
 private:
   BasicIterator<BasicNode<userType>> begin_;
@@ -51,19 +55,17 @@ public:
   virtual void rend(BasicNode<userType> &node) = 0;
   virtual void cbegin(BasicNode<userType> &node) = 0;
   virtual void cend(BasicNode<userType> &node) = 0;
-  template<typename nodeType>
-  class BasicConstIterator : public BasicIterator<nodeType> {
-  public:
-    ~BasicConstIterator() override = default;
 
-    const nodeType& operator*() const override = 0;
-  };
-  template<typename nodeType>
-  class ReverseBasicIterator : public BasicIterator<nodeType> {
-  };
-  template<typename nodeType>
-  class ConstReverseBasicIterator : public ReverseBasicIterator<nodeType> {
+
+  class ReverseBasicIterator : public BasicIterator {
     public:
+    ~ReverseBasicIterator() override = default;
+  };
+  template<typename nodeType>
+  class ConstReverseBasicIterator : public ReverseBasicIterator {
+    public:
+    ~ConstReverseBasicIterator() override = default;
+
     const nodeType& operator*() const override = 0;
   };
   virtual void insert() = 0;
