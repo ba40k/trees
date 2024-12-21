@@ -3,48 +3,28 @@
 //
 #ifndef NODE_H
 #define NODE_H
-#include <ios>
-#include <ranges>
-#include <bits/ios_base.h>
-
+#include <vector>
 template <typename userType>
 class BasicNode<userType> {
 private:
-    BasicNode* parent;
-    BasicNode* leftChild;
-    BasicNode* rightChild;
+    BasicNode* ancestor = nullptr;
+    std::vector<BasicNode*> descendants;
     userType data;
-    bool empty;
+    bool empty = true;
 public:
-    BasicNode();
-    BasicNode<userType>* getParent() const noexcept;
-    BasicNode<userType>* getLeftChild() const noexcept;
-    BasicNode<userType>* getRightChild() const;
-    userType getData() const;
-    bool isEmpty() const;
-    void setParent(BasicNode* parent);
-    void setLeftChild(BasicNode* left);
-    void setRightChild(BasicNode* right);
-    void setData(userType data);
-    void setEmpty(bool empty);
+    virtual BasicNode* getParent() const noexcept = 0;
+    virtual BasicNode<userType>* getLeftChild() const noexcept = 0;
+    virtual BasicNode<userType>* getRightChild() const = 0;
+    virtual userType getData() const = 0;
+    [[nodiscard]] virtual bool isEmpty() const = 0;
+    virtual void setParent(BasicNode* parent) = 0;
+    virtual void setLeftChild(BasicNode* left) = 0;
+    virtual void setRightChild(BasicNode* right) = 0;
+    virtual void setData(userType data) = 0;
+    virtual void setEmpty(bool empty) = 0;
+    virtual ~BasicNode() = 0;
 };
-template <typename userType>
-BasicNode<userType>::BasicNode() {
-    parent = nullptr;
-    leftChild = nullptr;
-    rightChild = nullptr;
-    data = 0;
-    empty = true;
-}
 
-template<typename userType>
-BasicNode<userType>* BasicNode<userType>::getParent() const noexcept {
-    return parent;
-}
 
-template<typename userType>
-BasicNode<userType>* BasicNode<userType>::getLeftChild() const noexcept{
-    return leftChild;
-}
 
 #endif //NODE_H
