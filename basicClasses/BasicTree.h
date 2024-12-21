@@ -55,8 +55,6 @@ public:
   virtual void rend(BasicNode<userType> &node) = 0;
   virtual void cbegin(BasicNode<userType> &node) = 0;
   virtual void cend(BasicNode<userType> &node) = 0;
-
-
   class ReverseBasicIterator : public BasicIterator {
     public:
     ~ReverseBasicIterator() override = default;
@@ -65,13 +63,11 @@ public:
   class ConstReverseBasicIterator : public ReverseBasicIterator {
     public:
     ~ConstReverseBasicIterator() override = default;
-
     const nodeType& operator*() const override = 0;
   };
   virtual void insert() = 0;
   virtual void erase() = 0;
   virtual void find() = 0;
   virtual ~BasicTree()=default;
-  
 };
 #endif //BASICTREE_H
