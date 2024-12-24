@@ -16,9 +16,9 @@ public:
     virtual userType getData() const = 0;
     [[nodiscard]] virtual bool isEmpty() const = 0;
     virtual void setAncestor(BasicNode* ancector_) = 0;
-    virtual BasicNode* getDescendant(int i);
-    virtual BasicNode* getAncestor();
-    virtual void setDescendant(BasicNode* descendant_);
+    virtual BasicNode* getDescendant(int i) = 0;
+    virtual BasicNode* getAncestor() = 0;
+    virtual void setDescendant(BasicNode* descendant_)= 0;
     virtual void setData(userType data) = 0;
     virtual void setEmpty(bool empty) = 0;
     virtual ~BasicNode() = 0;
